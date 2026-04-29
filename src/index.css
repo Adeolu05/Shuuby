@@ -1,253 +1,142 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
+  --font-serif: "DM Serif Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* Dark editorial palette */
-  --color-bg-primary: #0A0A0A;
-  --color-bg-secondary: #111111;
-  --color-bg-elevated: #161616;
-  --color-bg-card: #1A1A1A;
-  --color-bg-glass: rgba(10, 10, 10, 0.7);
+  /* ─── Amethyst Dusk Purple Palette ─── */
+  --color-bg-deep: #0C0A14;
+  --color-bg-card: #13111D;
+  --color-bg-elevated: #1A1726;
+  --color-bg-hover: #211E30;
 
-  --color-text-primary: #F5F0E8;
-  --color-text-secondary: #A8A29E;
-  --color-text-muted: #6B6560;
-  --color-text-dim: #3D3A37;
+  --color-text-primary: #EDE9F6;
+  --color-text-secondary: #9B95AD;
+  --color-text-muted: #6A6280;
+  --color-text-dim: #3E3855;
 
-  --color-accent-gold: #C4A97D;
-  --color-accent-gold-light: #D4BC94;
-  --color-accent-gold-dim: rgba(196, 169, 125, 0.15);
+  --color-accent: #A78BFA;
+  --color-accent-bright: #C4B5FD;
+  --color-accent-deep: #7C3AED;
+  --color-accent-dim: rgba(167, 139, 250, 0.12);
 
-  --color-border: rgba(245, 240, 232, 0.08);
-  --color-border-hover: rgba(245, 240, 232, 0.15);
-  --color-border-accent: rgba(196, 169, 125, 0.3);
+  --color-border: rgba(167, 139, 250, 0.08);
+  --color-border-hover: rgba(167, 139, 250, 0.18);
 }
 
-/* ─── Base Enhancements ─── */
-
+/* ─── Base ─── */
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-accent-gold) var(--color-bg-primary);
+  scrollbar-color: var(--color-accent-deep) var(--color-bg-deep);
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg-deep);
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-/* Custom scrollbar for webkit */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-bg-primary);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-accent-gold);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent-gold-light);
-}
-
-/* Selection */
-::selection {
-  background-color: var(--color-accent-gold);
-  color: var(--color-bg-primary);
-}
-::-moz-selection {
-  background-color: var(--color-accent-gold);
-  color: var(--color-bg-primary);
-}
-
-/* ─── Typography ─── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
-.text-balance {
-  text-wrap: balance;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--color-accent-deep); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
 
-/* ─── Grain Texture Overlay ─── */
-.grain-overlay::after {
+/* Selection */
+::selection { background-color: var(--color-accent); color: var(--color-bg-deep); }
+
+/* ─── Grain Overlay ─── */
+.grain::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: overlay;
 }
 
-/* ─── Glass Morphism ─── */
+/* ─── Glass Nav ─── */
 .glass-nav {
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(12, 10, 20, 0.8);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   border-bottom: 1px solid var(--color-border);
 }
 
-.glass-nav-transparent {
-  background: transparent;
-  backdrop-filter: none;
-  border-bottom: 1px solid transparent;
-}
-
-/* ─── Editorial Image Frame ─── */
-.editorial-image-frame {
-  padding: 0;
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(196, 169, 125, 0.05);
-  overflow: hidden;
-}
-
-/* ─── Divider ─── */
-.editorial-divider {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-border-hover),
-    transparent
-  );
-  width: 100%;
-}
-
-/* ─── Gold accent line ─── */
-.accent-line {
-  width: 40px;
-  height: 1px;
-  background: var(--color-accent-gold);
-  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.group:hover .accent-line,
-.accent-line-hover:hover {
-  width: 80px;
-}
-
-/* ─── Animated underline ─── */
-.animated-underline {
+/* ─── Animated Underline ─── */
+.anim-underline {
   position: relative;
   display: inline-block;
 }
-.animated-underline::after {
+.anim-underline::after {
   content: "";
   position: absolute;
-  bottom: -2px;
+  bottom: -3px;
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-accent-gold);
+  background: var(--color-accent);
   transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.animated-underline:hover::after {
-  width: 100%;
-}
+.anim-underline:hover::after { width: 100%; }
 
-/* ─── Scroll indicator pulse ─── */
-@keyframes pulse-scroll {
-  0%, 100% { opacity: 0.4; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(6px); }
+/* ─── Accent Line ─── */
+.accent-line {
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.scroll-indicator {
-  animation: pulse-scroll 2s ease-in-out infinite;
-}
+.group:hover .accent-line { width: 64px; }
 
-/* ─── Counter animation ─── */
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ─── Stagger reveal ─── */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ─── Section label ─── */
+/* ─── Section Label ─── */
 .section-label {
   font-family: var(--font-sans);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--color-accent-gold);
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
 }
 
-/* ─── Decorative quote mark ─── */
-.decorative-quote::before {
-  content: "\201C";
-  font-family: var(--font-display);
-  font-size: 8rem;
-  line-height: 1;
-  color: var(--color-accent-gold);
-  opacity: 0.15;
-  position: absolute;
-  top: -2rem;
-  left: -1rem;
-  pointer-events: none;
+/* ─── Scroll Pulse ─── */
+@keyframes pulse-scroll {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(6px); }
+}
+.scroll-pulse { animation: pulse-scroll 2.5s ease-in-out infinite; }
+
+/* ─── Divider ─── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border-hover), transparent);
 }
 
-/* ─── Mobile full-screen overlay ─── */
+/* ─── Mobile Overlay ─── */
 .mobile-overlay {
   position: fixed;
   inset: 0;
   z-index: 40;
-  background: var(--color-bg-primary);
+  background: var(--color-bg-deep);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-/* ─── Numbered indicators ─── */
-.work-number {
-  font-family: var(--font-sans);
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: var(--color-text-dim);
-  transition: color 0.3s ease;
-  white-space: nowrap;
-}
-.group:hover .work-number {
-  color: var(--color-accent-gold);
-}
-
-/* ─── Responsive helper ─── */
-@media (max-width: 1024px) {
-  .hero-title {
-    font-size: 3.5rem !important;
-  }
-}
-
+/* ─── Hero Responsive ─── */
 @media (max-width: 640px) {
-  .hero-title {
-    font-size: 2.5rem !important;
-  }
+  .hero-title { font-size: 2.8rem !important; }
 }
