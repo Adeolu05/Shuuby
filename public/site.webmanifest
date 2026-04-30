@@ -1,0 +1,21 @@
+{
+  "name": "Olasubomi Adegun — Storyteller & Relationship Curator",
+  "short_name": "Shubby",
+  "description": "Exploring love, growth & human behaviour through writing.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0C0A14",
+  "background_color": "#0C0A14",
+  "display": "standalone",
+  "start_url": "/"
+}
