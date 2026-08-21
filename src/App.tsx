@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'motion/react';
-import { ArrowRight, ArrowUpRight, Menu, X as XIcon, ChevronDown } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Menu, X as XIcon, ChevronDown, Download } from 'lucide-react';
+
+const CV_HREF = '/Olasubomi-Adegun-CV.pdf';
 
 /* ─── Social Icons (inline SVGs for pixel-perfect control) ─── */
 const socials = [
@@ -39,7 +41,7 @@ const socials = [
 ];
 
 /* ─── Social Link Component ─── */
-const SocialIcon = ({ social, size = 'md' }: { social: typeof socials[0]; size?: 'sm' | 'md' }) => {
+const SocialIcon: React.FC<{ social: typeof socials[0]; size?: 'sm' | 'md' }> = ({ social, size = 'md' }) => {
   const sizeClasses = size === 'sm'
     ? 'w-9 h-9'
     : 'w-11 h-11';
@@ -94,7 +96,7 @@ const NavBar = () => {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  const links = ['Work', 'About', 'Series', 'Mission', 'Contact'];
+  const links = ['Work', 'About', 'Experience', 'Series', 'Mission', 'Contact'];
 
   return (
     <>
@@ -109,7 +111,11 @@ const NavBar = () => {
             {links.map(l => (
               <a key={l} href={`#${l.toLowerCase()}`} className="anim-underline text-[10px] uppercase tracking-[0.18em] font-medium text-[#9B95AD] hover:text-[#EDE9F6] transition-colors">{l}</a>
             ))}
-            <Btn variant="primary" className="ml-3 text-[10px] py-2.5 px-5">Let's Talk</Btn>
+            <a href={CV_HREF} download="Olasubomi-Adegun-CV.pdf" className="ml-3">
+              <Btn variant="primary" className="text-[10px] py-2.5 px-5 inline-flex items-center gap-1.5">
+                <Download size={11} /> CV
+              </Btn>
+            </a>
           </nav>
           <button className="lg:hidden text-[#EDE9F6]" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <XIcon size={22}/> : <Menu size={22}/>}
@@ -126,6 +132,9 @@ const NavBar = () => {
                   initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}
                   onClick={() => setMenuOpen(false)}>{l}</motion.a>
               ))}
+              <a href={CV_HREF} download="Olasubomi-Adegun-CV.pdf" className="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] font-semibold text-[#A78BFA]">
+                <Download size={14} /> Download CV
+              </a>
             </nav>
           </motion.div>
         )}
@@ -177,8 +186,8 @@ const Hero = () => {
 
         {/* CTAs */}
         <motion.div className="flex flex-wrap gap-3 justify-center" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}>
-          <a href="https://preview.mailerlite.io/forms/2013310/179295256339023297/share" target="_blank" rel="noopener noreferrer"><Btn variant="primary">Read the Newsletter</Btn></a>
-          <a href="#series"><Btn variant="secondary">Explore Series</Btn></a>
+          <a href={CV_HREF} download="Olasubomi-Adegun-CV.pdf"><Btn variant="primary" className="inline-flex items-center gap-2"><Download size={13} /> Download CV</Btn></a>
+          <a href="https://preview.mailerlite.io/forms/2013310/179295256339023297/share" target="_blank" rel="noopener noreferrer"><Btn variant="secondary">Read the Newsletter</Btn></a>
         </motion.div>
       </motion.div>
 
@@ -268,13 +277,102 @@ const About = () => (
         {/* Stats row */}
         <div className="flex gap-10 mt-10 pt-8 border-t border-[rgba(167,139,250,0.08)]">
           <Stat value="54+" label="Subscribers" />
-          <Stat value="5" label="Series" />
+          <Stat value="6" label="Series" />
           <Stat value="50+" label="Articles" />
         </div>
       </motion.div>
     </div>
   </section>
 );
+
+/* ═══ EXPERIENCE ═══ */
+const Experience = () => {
+  const roles = [
+    {
+      role: 'Founder & Operations Lead',
+      org: 'Love and Links',
+      meta: '2023 – Present · Nigeria',
+      detail: 'Human-powered matchmaking platform pairing people through profile review, red- and green-flag feedback, private introductions, and post-match guidance — not swipe culture.',
+      points: ['Lead operations with a four-person team across matching, PR, community records, and technology.', 'Built Cupid’s Corner, a WhatsApp community for dating tips, polls, and match updates.', 'Run original relationship surveys that feed both matching and public writing.'],
+    },
+    {
+      role: 'Creator & Writer',
+      org: 'Grab A Seat With Shubby',
+      meta: '2023 – Present',
+      detail: 'Independent writing house exploring love, identity, criminology, and everyday Nigerian life across six series and the Your Fairy Godfriend newsletter.',
+      points: ['50+ articles; cultural work for Amala Story including “The Perfect Date Debate.”', 'Public criminology writing, from Lombroso to a close reading of Brotherhood (2022).', 'Short-form video rants and series intros that carry the same voice off the page.'],
+    },
+    {
+      role: 'Classroom Teacher',
+      org: 'National Youth Service Corps',
+      meta: 'Nigeria · documented in Corper’s Diary',
+      detail: 'Served as an NYSC teacher and turned the humour, chaos, and dignity of classroom life into narrative non-fiction.',
+      points: ['Wrote from the staff room, assembly ground, and commute — including “Corporate vs Reality” and “Ifa Money.”'],
+    },
+  ];
+
+  const skills = [
+    'Storytelling', 'Newsletter editing', 'Matchmaking operations', 'Community facilitation',
+    'Survey research', 'Criminology communication', 'Brand voice', 'Content direction',
+  ];
+
+  return (
+    <section id="experience" className="py-24 md:py-36 px-6 border-t border-[rgba(167,139,250,0.06)]">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+          <div>
+            <span className="section-label block mb-2">Curriculum Vitae</span>
+            <h2 className="font-serif text-3xl md:text-4xl text-[#EDE9F6]">Experience &amp; education</h2>
+          </div>
+          <a href={CV_HREF} download="Olasubomi-Adegun-CV.pdf" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] font-semibold text-[#A78BFA] hover:text-[#C4B5FD] transition-colors">
+            <Download size={14} /> Download full CV (PDF)
+          </a>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <div className="lg:col-span-2 space-y-8">
+            {roles.map((item, i) => (
+              <motion.article key={item.role} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                className="border-b border-[rgba(167,139,250,0.08)] pb-8 last:border-0 last:pb-0">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                  <h3 className="font-serif text-xl text-[#EDE9F6]">{item.role} <span className="text-[#A78BFA]">· {item.org}</span></h3>
+                  <span className="text-[10px] uppercase tracking-widest text-[#6A6280]">{item.meta}</span>
+                </div>
+                <p className="text-[14px] text-[#9B95AD] font-light leading-relaxed mb-3">{item.detail}</p>
+                <ul className="space-y-1.5">
+                  {item.points.map((p) => (
+                    <li key={p} className="text-[13px] text-[#9B95AD] font-light pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[0.55em] before:w-1.5 before:h-1.5 before:rounded-full before:bg-[#A78BFA]">{p}</li>
+                  ))}
+                </ul>
+              </motion.article>
+            ))}
+          </div>
+
+          <aside className="space-y-8">
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-2xl border border-[rgba(167,139,250,0.12)] bg-[#13111D] p-6">
+              <span className="section-label block mb-3">Education</span>
+              <h4 className="font-serif text-lg text-[#EDE9F6] mb-2">Undergraduate studies in Criminology</h4>
+              <p className="text-[13px] text-[#9B95AD] font-light leading-relaxed">
+                Final-year thesis on how police brutality shapes public perception of law enforcement in Nigeria (Ogun State case study). Survey work found 60% of respondents had experienced brutality or knew someone who had.
+              </p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-2xl border border-[rgba(167,139,250,0.12)] bg-[#13111D] p-6">
+              <span className="section-label block mb-4">Core skills</span>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((s) => (
+                  <span key={s} className="text-[10px] uppercase tracking-widest font-semibold text-[#C4B5FD] border border-[rgba(167,139,250,0.2)] rounded-full px-3 py-1.5">{s}</span>
+                ))}
+              </div>
+            </motion.div>
+            <a href={CV_HREF} download="Olasubomi-Adegun-CV.pdf" className="block">
+              <Btn variant="secondary" className="w-full inline-flex items-center justify-center gap-2"><Download size={13} /> Full CV (PDF)</Btn>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 /* ═══ SERIES ═══ */
 const Series = () => {
@@ -425,7 +523,7 @@ const Contact = () => (
       </motion.p>
       <motion.div className="flex flex-wrap gap-4 justify-center mb-14" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.25 }}>
         <a href="https://preview.mailerlite.io/forms/2013310/179295256339023297/share" target="_blank" rel="noopener noreferrer"><Btn variant="primary">Subscribe Now</Btn></a>
-        <a href="https://whatsapp.com/channel/0029Vb7gKDq0VycPb8qY5r00" target="_blank" rel="noopener noreferrer" className="anim-underline text-[11px] uppercase tracking-widest font-semibold text-[#EDE9F6] hover:text-[#A78BFA] transition-colors py-3">Join Cupid's Corner</a>
+        <a href={CV_HREF} download="Olasubomi-Adegun-CV.pdf"><Btn variant="secondary" className="inline-flex items-center gap-2"><Download size={13} /> Download CV</Btn></a>
       </motion.div>
       {/* Social Icons */}
       <motion.div className="flex gap-4 justify-center mb-8" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.35 }}>
@@ -454,6 +552,7 @@ const Footer = () => (
       </div>
       <div className="flex flex-col md:flex-row items-center justify-between w-full gap-3 text-[9px] uppercase tracking-[0.15em] text-[#3E3855]">
         <span>&copy; {new Date().getFullYear()} Olasubomi Adegun (Shubby)</span>
+        <a href={CV_HREF} download="Olasubomi-Adegun-CV.pdf" className="hover:text-[#A78BFA] transition-colors">Download CV</a>
         <span>Curated with intention · Based in Nigeria</span>
         <span className="italic normal-case tracking-normal text-[11px] text-[#6A6280]">Navigating Human Connection</span>
       </div>
@@ -470,6 +569,7 @@ export default function App() {
         <Hero />
         <FeaturedWork />
         <About />
+        <Experience />
         <Series />
         <Mission />
         <Contact />

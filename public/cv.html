@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olasubomi Adegun: Curriculum Vitae</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1A1228;
+      --muted: #5A5268;
+      --soft: #8A8298;
+      --line: #E6E0F0;
+      --accent: #6D28D9;
+      --accent-soft: #EDE7FE;
+      --paper: #FFFEFB;
+      --panel: #F7F4FC;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @page {
+      size: A4;
+      margin: 10mm 11mm 10mm 11mm;
+    }
+
+    html, body {
+      background: #cfc8d8;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+      color: var(--ink);
+      font-size: 9pt;
+      line-height: 1.38;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: var(--paper);
+      padding: 14mm 15mm 12mm;
+      position: relative;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .header {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-soft);
+      flex-shrink: 0;
+    }
+
+    .header-text { flex: 1; min-width: 0; }
+
+    h1 {
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: 26pt;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .aka {
+      font-family: "DM Serif Display", Georgia, serif;
+      font-style: italic;
+      color: var(--accent);
+      font-size: 13pt;
+    }
+
+    .role {
+      margin-top: 6px;
+      font-size: 8.5pt;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .contacts {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 14px;
+      font-size: 8pt;
+      color: var(--muted);
+    }
+
+    .contacts span { white-space: nowrap; }
+    .dot { color: var(--line); }
+
+    .summary {
+      margin: 10px 0 2px;
+      font-size: 9.1pt;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+
+    h2 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 8pt;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 9px 0 5px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .job { margin-bottom: 8px; }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .job-title {
+      font-weight: 700;
+      font-size: 10.2pt;
+      color: var(--ink);
+    }
+
+    .job-org {
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .job-meta {
+      font-size: 8pt;
+      color: var(--soft);
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .job-sub {
+      font-size: 8pt;
+      color: var(--muted);
+      margin: 1px 0 3px;
+    }
+
+    ul {
+      padding-left: 14px;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 2px;
+      color: var(--ink);
+    }
+
+    li::marker { color: var(--accent); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 16px;
+      break-inside: auto;
+    }
+
+    .sheet-2 {
+      break-before: page;
+      page-break-before: always;
+    }
+
+    .job, .pub, .series-item, .quote, .stat-row {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .chip {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 7.6pt;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    .pub {
+      margin-bottom: 4px;
+    }
+
+    .pub-title {
+      font-weight: 700;
+      font-size: 9.4pt;
+    }
+
+    .pub-meta {
+      font-size: 8pt;
+      color: var(--muted);
+    }
+
+    .series-item {
+      margin-bottom: 5px;
+    }
+
+    .series-item strong {
+      display: block;
+      font-size: 9.4pt;
+    }
+
+    .series-item span {
+      font-size: 8.3pt;
+      color: var(--muted);
+    }
+
+    .quote {
+      margin-top: 6px;
+      padding: 7px 10px;
+      background: var(--panel);
+      border-left: 3px solid var(--accent);
+      font-family: "DM Serif Display", Georgia, serif;
+      font-style: italic;
+      font-size: 9pt;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+
+    .quote cite {
+      display: block;
+      margin-top: 6px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-style: normal;
+      font-size: 7.5pt;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--soft);
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: 8px;
+      padding-top: 5px;
+      border-top: 1px solid var(--line);
+      font-size: 7.4pt;
+      color: var(--soft);
+      white-space: nowrap;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 9px 0 1px;
+    }
+
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 6px 8px 5px;
+      text-align: center;
+    }
+
+    .stat b {
+      display: block;
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: 13pt;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 3px;
+      font-size: 6.8pt;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    @media screen {
+      body { padding: 24px 0 48px; }
+      .page {
+        box-shadow: 0 18px 50px rgba(26, 18, 40, 0.18);
+      }
+      .screen-bar {
+        width: 210mm;
+        margin: 0 auto 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        color: var(--ink);
+      }
+      .screen-bar a.btn {
+        background: var(--accent);
+        color: white;
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+    }
+
+    @media print {
+      html, body { background: white; }
+      .page { width: auto; min-height: auto; padding: 0; }
+      .screen-bar { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen-bar">
+    <span>Olasubomi Adegun · Curriculum Vitae</span>
+    <a class="btn" href="/Olasubomi-Adegun-CV.pdf" download="Olasubomi-Adegun-CV.pdf">Download PDF</a>
+  </div>
+
+  <article class="page">
+    <header class="header">
+      <img class="photo" src="images/shubby-headshot.jpg" alt="Portrait of Olasubomi Adegun" />
+      <div class="header-text">
+        <h1>Olasubomi Adegun <span class="aka">“Shubby”</span></h1>
+        <p class="role">Storyteller · Relationship Curator · Writer</p>
+        <p class="contacts">
+          <span>Nigeria</span>
+          <span class="dot">·</span>
+          <span><a href="https://shubby-eta.vercel.app">shubby-eta.vercel.app</a></span>
+          <span class="dot">·</span>
+          <span><a href="https://loveandlinks.org">loveandlinks.org</a></span>
+          <span class="dot">·</span>
+          <span><a href="https://linkedin.com/in/olasubomi-adegun">LinkedIn</a></span>
+          <span class="dot">·</span>
+          <span><a href="https://instagram.com/olasubomi.adegun">@olasubomi.adegun</a></span>
+          <span class="dot">·</span>
+          <span><a href="https://x.com/Olashubby_">@Olashubby_</a></span>
+        </p>
+      </div>
+    </header>
+
+    <p class="summary">
+      Storyteller, relationship curator, and criminology writer exploring love, growth, and human behaviour.
+      Founder and Operations Lead of <strong>Love and Links</strong>, a human-powered matchmaking platform,
+      and creator of <strong>Grab A Seat With Shubby</strong>, a writing house of 50+ articles across series on
+      modern relationships, identity, criminology, and everyday Nigerian life. Blends original social research,
+      newsletter publishing, community facilitation, and cultural storytelling to help people understand
+      connection and choose it more intentionally.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat"><b>50+</b><span>Articles published</span></div>
+      <div class="stat"><b>6</b><span>Writing series</span></div>
+      <div class="stat"><b>54+</b><span>Newsletter subscribers</span></div>
+      <div class="stat"><b>2023+</b><span>Independent practice</span></div>
+    </div>
+
+    <h2>Professional experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <p class="job-title">Founder &amp; Operations Lead <span class="job-org">· Love and Links</span></p>
+        <p class="job-meta">2023 to Present · Nigeria</p>
+      </div>
+      <p class="job-sub">Premium human-powered matchmaking · loveandlinks.org · Motto: “Pairing souls, one connection at a time.”</p>
+      <ul>
+        <li>Founded and operate a matchmaking platform that replaces swipe culture with curated, human-reviewed introductions for people seeking real romantic connection.</li>
+        <li>Lead operations across matching, client experience, and community with a four-person team covering PR, community records, and technology.</li>
+        <li>Designed the matching journey: profile review, private red- and green-flag feedback, compatibility search, confidential recommendation, client approval, and post-match guidance.</li>
+        <li>Built and facilitate <strong>Cupid’s Corner</strong>, a WhatsApp community for dating activities, relationship tips, polls, and match previews.</li>
+        <li>Run original dating surveys to inform matching and writing; produce promotional and behind-the-scenes video; capture client testimonials on match quality.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <p class="job-title">Creator &amp; Writer <span class="job-org">· Grab A Seat With Shubby</span></p>
+        <p class="job-meta">2023 to Present</p>
+      </div>
+      <p class="job-sub">Independent writing platform · Newsletter: Your Fairy Godfriend · Portfolio: shubby-eta.vercel.app</p>
+      <ul>
+        <li>Publish 50+ articles across six series, using humour, emotional honesty, and social observation to examine love, identity, culture, and behaviour.</li>
+        <li>Write and edit <strong>Your Fairy Godfriend</strong>, a personal-reflection newsletter (54+ subscribers), including seasonal and relationship-focused editions.</li>
+        <li>Contribute cultural storytelling to <strong>Amala Story</strong>, including “The Perfect Date Debate” on romance in contemporary Nigerian dating.</li>
+        <li>Translate criminological theory and Nollywood crime narratives into accessible public writing; produce short-form video rants and series intros.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <p class="job-title">Classroom Teacher <span class="job-org">· National Youth Service Corps (NYSC)</span></p>
+        <p class="job-meta">Nigeria</p>
+      </div>
+      <p class="job-sub">Documented in the series Corper’s Diary</p>
+      <ul>
+        <li>Served as an NYSC teacher, working in a school setting (assembly, staff room, classroom) and navigating the gap between formal training and lived classroom reality.</li>
+        <li>Turned daily service into narrative non-fiction, capturing humour, fatigue, cultural texture, and the dignity of ordinary teaching work for a public audience.</li>
+      </ul>
+    </div>
+
+    <div class="sheet-2">
+    <h2>Education &amp; research</h2>
+    <div class="job">
+      <div class="job-head">
+        <p class="job-title">Undergraduate studies in Criminology</p>
+        <p class="job-meta">Nigeria</p>
+      </div>
+      <ul>
+        <li><strong>Final-year thesis:</strong> How police brutality affects public perception of law enforcement officers in Nigeria (Ogun State case study). 60% of respondents had experienced brutality or knew someone who had, including people aged 36 to 45, used to argue that harassment exceeds appearance-based stereotypes and points to systemic power.</li>
+        <li>Independent relationship survey on what most often breaks relationships (cheating ranked highly), later informing the essay “How to Know If Your Partner Is Cheating on You.”</li>
+        <li>Public scholarship connecting classical criminology (including Lombroso and tattoo stigma) to Nigerian street life, policing, and popular film.</li>
+      </ul>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h2>Selected publications &amp; writing</h2>
+        <div class="pub">
+          <p class="pub-title">How to Know If Your Partner Is Cheating on You</p>
+          <p class="pub-meta">Your Fairy Godfriend · Humour &amp; insight · Original survey on trust and relationship breakdown</p>
+        </div>
+        <div class="pub">
+          <p class="pub-title">The Perfect Date Debate</p>
+          <p class="pub-meta">Amala Story · Cultural storytelling on romance, food, and Nigerian dating conventions</p>
+        </div>
+        <div class="pub">
+          <p class="pub-title">Dearest Santa</p>
+          <p class="pub-meta">Your Fairy Godfriend · Seasonal reflection on wishes, longing, and personal growth</p>
+        </div>
+        <div class="pub">
+          <p class="pub-title">Review of Lombroso’s Syndrome</p>
+          <p class="pub-meta">Let’s Talk Criminology · Links thesis research, tattoo stigma, and everyday stereotyping</p>
+        </div>
+        <div class="pub">
+          <p class="pub-title">Brotherhood (2022): A Nollywood Thriller Through a Criminological Lens</p>
+          <p class="pub-meta">Let’s Talk Criminology · Close reading of Jade Osiberu’s film (Tobi Bakare, Falz) via crime, twinship, and policing</p>
+        </div>
+        <div class="pub">
+          <p class="pub-title">The Dating Market Chronicles · Setan!</p>
+          <p class="pub-meta">Observational fiction-essay on types, desire, and the contemporary dating market</p>
+        </div>
+        <div class="pub">
+          <p class="pub-title">Dear Me, from the Me of 2025 to the Me of 2009</p>
+          <p class="pub-meta">Diary of a Girl Who’s Evolving · 16-year letter on memory, girlhood, and becoming</p>
+        </div>
+        <div class="pub">
+          <p class="pub-title">Corper’s Diary: Day 2: Corporate vs Reality · Day 3: Ifa Money</p>
+          <p class="pub-meta">Narrative non-fiction from NYSC teaching; classroom, commute, and cultural life</p>
+        </div>
+      </div>
+
+      <div>
+        <h2>Writing series</h2>
+        <div class="series-item">
+          <strong>Dating Market Chronicles</strong>
+          <span>Witty social observation unpacking modern love, status, and courtship.</span>
+        </div>
+        <div class="series-item">
+          <strong>Let’s Talk Criminology</strong>
+          <span>Theories and social behaviour retold as stories, reviews, and film criticism.</span>
+        </div>
+        <div class="series-item">
+          <strong>Corper’s Diary</strong>
+          <span>Life as an NYSC teacher: humour, chaos, and authentic classroom experience.</span>
+        </div>
+        <div class="series-item">
+          <strong>Diary of a Girl Who’s Evolving</strong>
+          <span>Poetic journal entries on growth, healing, body, and self-authorship.</span>
+        </div>
+        <div class="series-item">
+          <strong>Random Rants With Her</strong>
+          <span>Unfiltered video and written commentary on life, culture, and the everyday.</span>
+        </div>
+        <div class="series-item">
+          <strong>Love and Links</strong>
+          <span>Matchmaking brand storytelling, promo, and behind-the-scenes work.</span>
+        </div>
+
+        <h2>Platforms &amp; initiatives</h2>
+        <ul>
+          <li><strong>Your Fairy Godfriend:</strong> personal newsletter (54+ subscribers).</li>
+          <li><strong>Cupid’s Corner Q&amp;A:</strong> weekly community channel for singles.</li>
+          <li><strong>Relationship &amp; Dating Surveys:</strong> research archive informing writing and matching.</li>
+          <li><strong>Love and Links:</strong> matchmaking platform and counselling support.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Core skills</h2>
+    <div class="chips">
+      <span class="chip">Creative &amp; cultural storytelling</span>
+      <span class="chip">Long-form essays</span>
+      <span class="chip">Newsletter writing &amp; editing</span>
+      <span class="chip">Brand voice</span>
+      <span class="chip">Humour &amp; social commentary</span>
+      <span class="chip">Matchmaking operations</span>
+      <span class="chip">Relationship guidance</span>
+      <span class="chip">Community facilitation</span>
+      <span class="chip">Audience building</span>
+      <span class="chip">Survey &amp; social research</span>
+      <span class="chip">Criminology communication</span>
+      <span class="chip">Film &amp; cultural criticism</span>
+      <span class="chip">Content direction</span>
+      <span class="chip">Founder operations</span>
+      <span class="chip">Process design</span>
+    </div>
+
+    <h2>Languages &amp; working style</h2>
+    <ul>
+      <li><strong>English:</strong> professional written and spoken. <strong>Yoruba:</strong> used in cultural writing and dialogue in published essays.</li>
+      <li>Voice defined by authenticity, curiosity, and emotional honesty, moving between humour, research, and intimate reflection. Open to roles in writing, communications, editorial, community, relationship programmes, research communication, and brand storytelling.</li>
+    </ul>
+
+    <blockquote class="quote">
+      I am building a platform that explores human connection through writing, observation, and real-life engagement, at the intersection of storytelling, relationships, and emotional awareness.
+      <cite>Olasubomi Adegun, Creator, Love and Links</cite>
+    </blockquote>
+
+    <p class="footer-note">
+      Curriculum Vitae · Olasubomi Adegun (Shubby) · References and writing samples via the portfolio and LinkedIn · shubby-eta.vercel.app
+    </p>
+    </div>
+  </article>
+</body>
+</html>
